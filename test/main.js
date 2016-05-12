@@ -48,6 +48,9 @@ describe('gulp-less', function () {
 
     it('should compile single less file', function (done) {
       var lessFile = createVinyl('buttons.less');
+      lessFile.data = {
+          black: '#000'
+      };
 
       var stream = less();
       stream.once('data', function (cssFile) {
@@ -101,6 +104,10 @@ describe('gulp-less', function () {
       });
 
       files.forEach(function (file) {
+        file.data = {
+            black: '#000'
+        };
+
         stream.write(file);
       });
       stream.end();
@@ -134,6 +141,10 @@ describe('gulp-less', function () {
       stream.once('end', done);
 
       files.forEach(function (file) {
+        file.data = {
+          black: '#000'
+        };
+        
         stream.write(file);
       });
       stream.end();
